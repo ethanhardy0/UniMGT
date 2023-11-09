@@ -10,27 +10,34 @@ public class Course {
     private String courseBuilding;
     private String courseBldgRoom;
     private int courseCapacity;
-    private int courseID;
+    private int courseID = 0;
     private ArrayList<Student> enrolledStudents;
     private Instructor courseInstructor;
     private static int nextCourseID;
     
+
     public Course(String name, String building, String room, int capacity) {
         this.courseName = name;
         this.courseBuilding = building;
         this.courseBldgRoom = room;
         this.courseCapacity = capacity;
+        courseID = nextCourseID;
         nextCourseID++;
+        
     }
     
     public void enrolledStudent(Student newStudent) {
-        
+        this.enrolledStudents = new ArrayList<>();
+        enrolledStudents.add(newStudent);
     }
     
     public boolean removeStudent(int studentID) {
-        
-        
-        return false;
+        if(studentID <= enrolledStudents.size()){
+            enrolledStudents.remove(studentID);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public void assignInstructor(Instructor newInstr) {
@@ -41,8 +48,8 @@ public class Course {
         this.courseBldgRoom = room; 
     }
     
-    public void setCourseBuilding(String room) { // ??????/
-        this.courseBuilding = room; 
+    public void setCourseBuilding(String building) { 
+        this.courseBuilding = building; 
     }
     
     public void setCapacity(int newCapacity) {
@@ -55,13 +62,12 @@ public class Course {
     
     public String toString() {
         String str = "Course #: " + courseID + " Course: " + courseName + " Building: " + courseBuilding + " Room: " + courseBldgRoom
-            + " Capacity: " + courseCapacity;
+            + " Capacity: " + courseCapacity + " ";
         return str;
     }
     
     public String getRoster() {
-        
-        
-        return "";
+        return enrolledStudents.get(courseID).getStudentID() + " " + enrolledStudents.get(courseID).getName() + " " +
+                enrolledStudents.get(courseID).getStudentMajor()+ " " + enrolledStudents.get(courseID).getStudentYear() ; 
     }
 }

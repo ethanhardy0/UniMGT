@@ -9,7 +9,7 @@ public class Instructor {
     private String officeLocation;
     private String department;
     private String email;
-    private int instructorID;
+    private int instructorID = 100;
     private static int nextInstructID;
     
     public Instructor(String name, String prefix, String office, String dept, String email) {
@@ -18,6 +18,7 @@ public class Instructor {
         this.officeLocation = office;
         this.department = dept;
         this.email = email; 
+        instructorID = nextInstructID;
         nextInstructID++;
     }
     

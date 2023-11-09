@@ -13,7 +13,7 @@ public class Main {
     public static ArrayList<Instructor> instructorArray = new ArrayList<>();
 
     public static void main(String[] args) {
-        int selection = 0; // String or int?
+        int selection = 0; 
         
         // Loop for sending user to expected path
         do { 
@@ -72,12 +72,12 @@ public class Main {
             }
             if (selection > 6) {
                 System.out.println("Please enter a valid menu option.");
+                return 0;
             }
             else {
                 System.out.println("Please enter a valid menu option.");
+                return 0;
             }
-            
-        return selection;
     }
     
     public static void createCourse() {
@@ -111,31 +111,41 @@ public class Main {
     }
 
     public static void addStudent() {
+        if (courseArray.isEmpty()) {
+            System.out.println("Please enter a course!");
+            return;
+        }
+
         // Scanner objects for student input 
         Scanner studentStr = new Scanner(System.in); 
         Scanner studentInt = new Scanner(System.in); 
         Scanner studentDouble = new Scanner(System.in); 
 
+        
         // Output for filling student object with input
         System.out.println("Enter Student Information:");
         System.out.print("Name: ");
         String name = studentStr.nextLine(); 
+        Student student = new Student(name);
 
         System.out.print("Major: ");
         String major = studentStr.nextLine(); 
+        student.setStudentMajor(major);
 
         System.out.print("Year: ");
         int year = studentInt.nextInt(); 
+        student.setStudentYear(year);
 
         System.out.print("GPA: ");
         double GPA = studentDouble.nextDouble();
+        student.setGPA(GPA);
 
         System.out.print("Email: ");
         String email = studentStr.nextLine(); 
+        student.setStudentEmail(email);
 
 
         // Instantiates a new student once input is received
-        Student student = new Student(name, year, major, GPA, email); 
 
         studentArray.add(student); 
         System.out.println();
@@ -148,32 +158,40 @@ public class Main {
  
         System.out.println("Choose Class: ");
         int courseNum = studentInt.nextInt(); 
-        courseArray.get(courseNum);
-        // Send student to course.enrolledStudent --> enrolledStudents arrayList? not sure
+        Course selectedCourse = courseArray.get(courseNum);
+        selectedCourse.enrolledStudent(student);
+
     }
 
     public static void rmStudent() {
         // Scanner for input of which student to remove
+        
+        if(courseArray.isEmpty()){
+            System.out.println("Enter a course first!");
+            return;
+        }
+        
         Scanner removalInt = new Scanner(System.in); 
 
 
         System.out.println("Please choose a class");
         // Trying to print out course objects held in courseArray
-        // System.out.print(course.ToString());
+        System.out.print(courseArray.toString());
         int courseNum = removalInt.nextInt(); 
         System.out.println("-------------------");
         System.out.println("Choose class #:" + courseNum);
-
-
         System.out.println("Please choose a student: ");
         // Trying to print out student objects held in studentArray
-        studentArray.toString(); 
+        System.out.println(courseArray.get(courseNum).getRoster());
         System.out.print("Type ID of Student to Remove: ");
         int studentNum = removalInt.nextInt(); 
+        
+        courseArray.get(studentNum).removeStudent(studentNum);
         // Link studentNum to studentID to remove student objects from the studentArray --> need to go through course class removeStudent()
 
-
         System.out.println("Student Successfully Removed!");
+        
+
     }
 
     public static void addInstr() {
@@ -217,7 +235,26 @@ public class Main {
 
     public static void printRoster() {
         // currently printing where student is stored --> how to display it?
-        System.out.println(studentArray.get(0));
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Please choose a class: ");
+        courseArray.toString();
+        System.out.println("Choose Class#: ");
+        int courseNum = scan.nextInt();
+        //Prints course roster
+        System.out.println(courseArray.get(courseNum).getRoster());
+        System.out.println();
+
     }
     
 }
+
+/*
+Show arrays for rmStudent and printRoster - format them
+Add Instructor of record for course
+Use IDs for display the arrays
+Validate all user input
+Invalid Student Year for student array
+Add comments throughout code
+Student name not correct - first last
+ */

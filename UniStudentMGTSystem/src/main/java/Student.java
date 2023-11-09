@@ -10,17 +10,23 @@ public class Student {
     private String studentMajor;
     private double GPA;
     private String studentEmail;
-    private int studentID;
+    private int studentID = 1000;
     private static int nextStudentID;
     
+    public Student(String name) {
+        this.firstName = name;
+        this.lastName = name;
+        studentID = nextStudentID;
+        nextStudentID++;
+    }
+
     public Student(String name, int year, String major, double GPA, String email) {
         this.firstName = name; 
         this.lastName = name; 
-        // this.studentYear = year; // Do I change year to String or studentYear to int??
         this.studentMajor = major;
         this.GPA = GPA; 
         this.studentEmail = email; 
-        // StudentID ???? --> this.studentID = nextStudentID 
+        studentID = nextStudentID;
         nextStudentID++;
     }
     
@@ -33,7 +39,7 @@ public class Student {
     }
     
     public String getName() {
-        return firstName + lastName;
+        return lastName + ", " + firstName;
     }
     
     // may be good?
@@ -65,7 +71,7 @@ public class Student {
     }    
 
     public String getStudentYear() {
-        return studentYear;
+        return this.studentYear;
     }
     
     public void setStudentMajor(String major) {
@@ -75,6 +81,4 @@ public class Student {
     public String getStudentMajor() {
         return studentMajor;
     }
-    
-
 }
