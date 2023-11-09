@@ -150,7 +150,6 @@ public class Main {
         int courseNum = studentInt.nextInt(); 
         courseArray.get(courseNum);
         // Send student to course.enrolledStudent --> enrolledStudents arrayList? not sure
-        
     }
 
     public static void rmStudent() {
@@ -175,7 +174,6 @@ public class Main {
 
 
         System.out.println("Student Successfully Removed!");
-
     }
 
     public static void addInstr() {
