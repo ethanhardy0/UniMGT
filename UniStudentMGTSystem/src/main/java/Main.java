@@ -226,7 +226,7 @@ public class Main {
         int courseNum = instrInt.nextInt();
 
         System.out.println("-------------------");
-        System.out.println("Choose Class #: " + courseNum);
+        System.out.print("Choose Class #: " + courseNum);
     
     // Assigns instructor to a course
         courseArray.get(courseNum).assignInstructor(instructor);
@@ -239,7 +239,7 @@ public class Main {
     // Prints courses in the system
         System.out.println("Please choose a class: ");
         courseArray.toString();
-        System.out.println("Choose Class#: ");
+        System.out.print("Choose Class#: ");
         int courseNum = scan.nextInt();
     //Prints course roster of students
         System.out.println(courseArray.get(courseNum).getRoster());
