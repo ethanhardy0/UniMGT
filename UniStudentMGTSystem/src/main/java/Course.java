@@ -10,10 +10,11 @@ public class Course {
     private String courseBuilding;
     private String courseBldgRoom;
     private int courseCapacity;
-    private int courseID = 0;
+    private int courseID;
     private ArrayList<Student> enrolledStudents;
     private Instructor courseInstructor;
-    private static int nextCourseID;
+    private static int nextCourseID = 0;
+    
     
 
     public Course(String name, String building, String room, int capacity) {
@@ -21,13 +22,13 @@ public class Course {
         this.courseBuilding = building;
         this.courseBldgRoom = room;
         this.courseCapacity = capacity;
-        courseID = nextCourseID;
+        this.enrolledStudents = new ArrayList<>();
+        this.courseID = nextCourseID;
         nextCourseID++;
         
     }
     
     public void enrolledStudent(Student newStudent) {
-        this.enrolledStudents = new ArrayList<>();
         enrolledStudents.add(newStudent);
     }
     
@@ -62,12 +63,18 @@ public class Course {
     
     public String toString() {
         String str = "Course #: " + courseID + " Course: " + courseName + " Building: " + courseBuilding + " Room: " + courseBldgRoom
-            + " Capacity: " + courseCapacity + " ";
+            + " Capacity: " + courseCapacity + " Instructor of Record: " + courseInstructor;
         return str;
     }
     
     public String getRoster() {
-        return enrolledStudents.get(courseID).getStudentID() + " " + enrolledStudents.get(courseID).getName() + " " +
-                enrolledStudents.get(courseID).getStudentMajor()+ " " + enrolledStudents.get(courseID).getStudentYear() ; 
+        StringBuilder str = new StringBuilder();
+
+        for (Student student : enrolledStudents) {
+            str.append(String.format("StudentID#: %s %s Major: %s Year:%s\n", 
+                student.getStudentID(), student.getName(), student.getStudentMajor(), student.getStudentYear()));
+        }
+        return str.toString();
+
     }
 }

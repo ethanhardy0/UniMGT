@@ -9,8 +9,8 @@ public class Instructor {
     private String officeLocation;
     private String department;
     private String email;
-    private int instructorID = 100;
-    private static int nextInstructID;
+    private int instructorID;
+    private static int nextInstructID = 10;
     
     public Instructor(String name, String prefix, String office, String dept, String email) {
         this.name = name;
@@ -18,7 +18,7 @@ public class Instructor {
         this.officeLocation = office;
         this.department = dept;
         this.email = email; 
-        instructorID = nextInstructID;
+        this.instructorID = nextInstructID;
         nextInstructID++;
     }
     
@@ -44,12 +44,11 @@ public class Instructor {
     
     // Maybe to do with title?? --> not sure if title == prefix
     public String getTitle() {
-        return prefix;
+        return this.prefix + " " + name;
     }
     
     public String toString() {
-        String str = " Instructor of record: " + prefix + " " + name;
-
+        String str = String.format("%s", getTitle());
         return str;
     }
 }

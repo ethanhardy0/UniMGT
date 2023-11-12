@@ -10,13 +10,13 @@ public class Student {
     private String studentMajor;
     private double GPA;
     private String studentEmail;
-    private int studentID = 1000;
-    private static int nextStudentID;
+    private int studentID;
+    private static int nextStudentID = 1000;
     
     public Student(String name) {
         this.firstName = name;
         this.lastName = name;
-        studentID = nextStudentID;
+        this.studentID = nextStudentID;
         nextStudentID++;
     }
 
@@ -26,7 +26,7 @@ public class Student {
         this.studentMajor = major;
         this.GPA = GPA; 
         this.studentEmail = email; 
-        studentID = nextStudentID;
+        this.studentID = nextStudentID;
         nextStudentID++;
     }
     
@@ -42,11 +42,10 @@ public class Student {
         return lastName + ", " + firstName;
     }
     
-    // may be good?
     public int getStudentID() {
-        return studentID;
+        return this.studentID;
     }
-    
+      
     public void setStudentEmail(String email) {
         this.studentEmail = email; 
     }
@@ -56,18 +55,18 @@ public class Student {
     }
 
     public void setStudentYear(int year) {
-        if (year == 1)
-            this.studentYear = "Freshman"; 
-        if (year == 2)
-            this.studentYear = "Sophmore";
-        if (year == 3)
-            this.studentYear = "Junior";
-        if (year == 4)
-            this.studentYear = "Senior";
-        if (year >= 5)
-            this.studentYear = (year + "th Year");
-        else
-            this.studentYear = "Invalid Student Year";
+        switch (year) {
+            case (1) : 
+                this.studentYear = "Freshman"; 
+            case (2) :
+                this.studentYear = "Sophmore";
+            case (3) :
+                this.studentYear = "Junior";
+            case (4) :
+                this.studentYear = "Senior";
+            default :
+                this.studentYear = "Invalid Student Year";
+        }
     }    
 
     public String getStudentYear() {
