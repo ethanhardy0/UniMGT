@@ -50,34 +50,34 @@ public class Main {
     public static int printMenu(int selection) {
         Scanner sel = new Scanner(System.in);
         
-            System.out.print("""
-                              Student Management System
-                              Please make a menu choice below:
-                              --------------------------------
-                              1. Create a Course
-                              2. Add student to Course
-                              3. Remove student from a Course
-                              4. Add instructor to a Course
-                              5. Print Roster for a Course
-                              6. Quit
-                              Choice:  """);
+        System.out.print("""
+                          Student Management System
+                          Please make a menu choice below:
+                          --------------------------------
+                          1. Create a Course
+                          2. Add student to Course
+                          3. Remove student from a Course
+                          4. Add instructor to a Course
+                          5. Print Roster for a Course
+                          6. Quit
+                          Choice:  """);
             
-        // validates menu choice
-            if (sel.hasNextInt()) {
-                selection = sel.nextInt();  
-                if (selection == 6) {
-                    System.out.println("Exiting Menu...");
-                }
-                return selection;
-            }
-            if (selection > 6) {
-                System.out.println("Please enter a valid menu option.");
-                return 0;
-            }
-            else {
-                System.out.println("Please enter a valid menu option.");
-                return 0;
-            }
+    // validates menu choice
+        if (sel.hasNextInt()) {
+            selection = sel.nextInt();  
+            if (selection == 6) {
+                  System.out.println("Exiting Menu...");
+               }
+            return selection;
+        }
+        if (selection > 6) {
+            System.out.println("Please enter a valid menu option.");
+            return 0;
+        }
+        else {
+            System.out.println("Please enter a valid menu option.");
+            return 0;
+        }
     }
     
     public static void createCourse() {
