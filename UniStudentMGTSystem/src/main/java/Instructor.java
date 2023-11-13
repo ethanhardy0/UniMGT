@@ -10,7 +10,7 @@ public class Instructor {
     private String department;
     private String email;
     private int instructorID;
-    private static int nextInstructID = 10;
+    private static int nextInstructID = 100;
     
     public Instructor(String name, String prefix, String office, String dept, String email) {
         this.name = name;
@@ -42,7 +42,6 @@ public class Instructor {
         this.officeLocation = office; 
     }
     
-    // Maybe to do with title?? --> not sure if title == prefix
     public String getTitle() {
         return this.prefix + " " + name;
     }

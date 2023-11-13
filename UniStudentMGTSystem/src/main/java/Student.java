@@ -31,7 +31,8 @@ public class Student {
     }
     
     public void setGPA(double GPA) {
-        this.GPA = GPA; 
+            this.GPA = GPA;
+         
     }
     
     public double getGPA() {

@@ -71,11 +71,11 @@ public class Main {
             return selection;
         }
         if (selection > 6) {
-            System.out.println("Please enter a valid menu option.");
+            System.out.println("Please enter a valid menu option.\n");
             return 0;
         }
         else {
-            System.out.println("Please enter a valid menu option.");
+            System.out.println("Please enter a valid menu option.\n");
             return 0;
         }
     }
@@ -108,7 +108,7 @@ public class Main {
     public static void addStudent() {
     // Checks if there are courses
         if (courseArray.isEmpty()) {
-            System.out.println("Please enter a course!");
+            System.out.println("Please enter a course to add a student!\n");
             return;
         }
 
@@ -129,11 +129,22 @@ public class Main {
         
         System.out.print("Year: ");
         int year = studentInt.nextInt(); 
+        while (year < 1 || year > 4) {
+            System.out.println("Not an available year!");
+            System.out.print("Year:");
+            year = studentInt.nextInt();
+        }
         student.setStudentYear(year);
 
         System.out.print("GPA: ");
         double GPA = studentDouble.nextDouble();
-        student.setGPA(GPA);
+    // Checks if GPA is in-range
+        while (GPA < 0 || GPA > 5) {
+            System.out.println("Invalid GPA!");
+            System.out.print("GPA: ");
+            GPA = studentDouble.nextDouble();
+        }
+        student.setGPA(GPA);             
 
         System.out.print("Email: ");
         String email = studentStr.nextLine(); 
@@ -159,18 +170,19 @@ public class Main {
 
     }
 
+
     public static void rmStudent() {
     // Scanner for input of which student to remove
         Scanner scan = new Scanner(System.in); 
     
     // Checks if there are courses 
         if (courseArray.isEmpty()) {
-            System.out.println("Enter a course first!");
+            System.out.println("Cannot remove students if there are no courses!\n");
             return;
         }
     // Checks if there are students
         if (studentArray.isEmpty()) {
-            System.out.println("Cannot remove a student if there are no students enrolled");
+            System.out.println("Cannot remove a student if there are no students enrolled\n");
             return;
         }
     // Prints courses in the system    
@@ -187,16 +199,22 @@ public class Main {
         int studentNum = scan.nextInt(); 
     
     // Removes a student from the course array
-        courseArray.get(courseNum).removeStudent(studentNum);
+        boolean remove = courseArray.get(courseNum).removeStudent(studentNum);
     
     // Validates whether a student has been removed
-        if (courseArray.get(courseNum).removeStudent(studentNum))
-            System.out.println("Student Successfully Removed!");
+        if (remove == false)
+            System.out.println("Student not found\n");
         else 
-            System.out.println("Student not found");
+            System.out.println("Student Successfully Removed!\n");
     }
 
     public static void addInstr() {
+    // Checks if there are courses 
+        if (courseArray.isEmpty()) {
+            System.out.println("Cannot add instructor to courses if there are no courses!\n");
+            return;
+        }
+
         Scanner instrStr = new Scanner(System.in); 
         Scanner instrInt = new Scanner(System.in); 
 
@@ -237,6 +255,12 @@ public class Main {
     }
 
     public static void printRoster() {
+    // Checks if there are courses 
+        if (courseArray.isEmpty()) {
+            System.out.println("Enter a course first!\n");
+            return;
+        }
+
     // Scanner for choosing a course
         Scanner scan = new Scanner(System.in);
         
@@ -259,5 +283,8 @@ Show arrays for rmStudent and printRoster - format them
 Validate all user input
 Add comments throughout code
 Student and Instructor name not correct - first last
-getTitle() --> what is use for it
+
+removeStudent --> can be better (no for each loop needed) : remove(Object) = bool
+
+GPA constraint
  */
