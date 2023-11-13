@@ -32,11 +32,11 @@ public class Course {
         enrolledStudents.add(newStudent);
     }
 
-    // student.getStudentID() == this.studentID
     public boolean removeStudent(int studentID) {
+        int idToRemove = 0;
         for (Student student : enrolledStudents) {
             if (student.getStudentID() == studentID) {
-                int idToRemove = studentID - 1000;
+                idToRemove = studentID - 1000;
                 enrolledStudents.remove(idToRemove);
                 return true;
             } 
@@ -73,6 +73,7 @@ public class Course {
     public String getRoster() {
         StringBuilder str = new StringBuilder();
 
+        // Chat helped make this
         for (Student student : enrolledStudents) {
             str.append(String.format("StudentID#: %s %s Major: %s Year:%s\n", 
                 student.getStudentID(), student.getName(), student.getStudentMajor(), student.getStudentYear()));

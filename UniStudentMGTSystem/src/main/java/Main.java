@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         int selection = 0; 
         
-        // Loop for sending user to expected path
+        // Loop for menu
         do { 
             selection = printMenu(selection);
         
@@ -66,8 +66,8 @@ public class Main {
         if (sel.hasNextInt()) {
             selection = sel.nextInt();  
             if (selection == 6) {
-                  System.out.println("Exiting Menu...");
-               }
+                System.out.println("Exiting Menu...");
+            }
             return selection;
         }
         if (selection > 6) {
@@ -116,7 +116,6 @@ public class Main {
         Scanner studentStr = new Scanner(System.in); 
         Scanner studentInt = new Scanner(System.in); 
         Scanner studentDouble = new Scanner(System.in); 
-
         
     // Fills student object
         System.out.println("Enter Student Information:");
@@ -127,7 +126,7 @@ public class Main {
         System.out.print("Major: ");
         String major = studentStr.nextLine(); 
         student.setStudentMajor(major);
-
+        
         System.out.print("Year: ");
         int year = studentInt.nextInt(); 
         student.setStudentYear(year);
@@ -139,6 +138,7 @@ public class Main {
         System.out.print("Email: ");
         String email = studentStr.nextLine(); 
         student.setStudentEmail(email);
+
 
     // Adds students to the student array
         studentArray.add(student); 
@@ -186,11 +186,11 @@ public class Main {
         System.out.print("Type ID of Student to Remove: ");
         int studentNum = scan.nextInt(); 
     
-    // Removes a student from the course array --> error for index happens here
-        boolean remove = courseArray.get(courseNum).removeStudent(studentNum);
+    // Removes a student from the course array
+        courseArray.get(courseNum).removeStudent(studentNum);
     
     // Validates whether a student has been removed
-        if (remove)
+        if (courseArray.get(courseNum).removeStudent(studentNum))
             System.out.println("Student Successfully Removed!");
         else 
             System.out.println("Student not found");
@@ -245,6 +245,7 @@ public class Main {
         courseArray.toString();
         System.out.print("Choose Class#: ");
         int courseNum = scan.nextInt();
+
     //Prints course roster of students
         System.out.println(courseArray.get(courseNum).getRoster());
         System.out.println();
@@ -255,15 +256,8 @@ public class Main {
 
 /*
 Show arrays for rmStudent and printRoster - format them
-Add Instructor of record for course
-Use IDs for display the arrays --> They show correctly for students, but still require 0-1 since using array
 Validate all user input
-Invalid Student Year for student array
 Add comments throughout code
-Student name not correct - first last
+Student and Instructor name not correct - first last
 getTitle() --> what is use for it
-
-Instructor of Record: None --> how to make this output true
-
-// MAJOR --> remove student only allows removal of the first student stored (LIFO)
  */

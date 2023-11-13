@@ -57,15 +57,20 @@ public class Student {
     public void setStudentYear(int year) {
         switch (year) {
             case (1) : 
-                this.studentYear = "Freshman"; 
+                this.studentYear = " Freshman"; 
+                break;
             case (2) :
-                this.studentYear = "Sophmore";
+                this.studentYear = " Sophmore";
+                break;
             case (3) :
-                this.studentYear = "Junior";
+                this.studentYear = " Junior";
+                break;
             case (4) :
-                this.studentYear = "Senior";
+                this.studentYear = " Senior";
+                break;
             default :
-                this.studentYear = "Invalid Student Year";
+                this.studentYear = " Invalid Student Year";
+                break;
         }
     }    
 
