@@ -31,14 +31,17 @@ public class Course {
     public void enrolledStudent(Student newStudent) {
         enrolledStudents.add(newStudent);
     }
-    
+
+    // student.getStudentID() == this.studentID
     public boolean removeStudent(int studentID) {
-        if(studentID <= enrolledStudents.size()){
-            enrolledStudents.remove(studentID);
-            return true;
-        } else {
-            return false;
+        for (Student student : enrolledStudents) {
+            if (student.getStudentID() == studentID) {
+                int idToRemove = studentID - 1000;
+                enrolledStudents.remove(idToRemove);
+                return true;
+            } 
         }
+        return false; 
     }
     
     public void assignInstructor(Instructor newInstr) {

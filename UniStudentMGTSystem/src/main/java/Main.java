@@ -186,10 +186,14 @@ public class Main {
         System.out.print("Type ID of Student to Remove: ");
         int studentNum = scan.nextInt(); 
     
-    // Removes a student from the course array
-        courseArray.get(studentNum).removeStudent(studentNum);
-
-        System.out.println("Student Successfully Removed!");
+    // Removes a student from the course array --> error for index happens here
+        boolean remove = courseArray.get(courseNum).removeStudent(studentNum);
+    
+    // Validates whether a student has been removed
+        if (remove)
+            System.out.println("Student Successfully Removed!");
+        else 
+            System.out.println("Student not found");
     }
 
     public static void addInstr() {
