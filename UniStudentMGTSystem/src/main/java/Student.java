@@ -14,15 +14,17 @@ public class Student {
     private static int nextStudentID = 1000;
     
     public Student(String name) {
-        this.firstName = name;
-        this.lastName = name;
+        int index = name.indexOf(" ");
+        this.firstName = name.substring(0, index);
+        this.lastName = name.substring(index);
         this.studentID = nextStudentID;
         nextStudentID++;
     }
 
     public Student(String name, int year, String major, double GPA, String email) {
-        this.firstName = name; 
-        this.lastName = name; 
+        int index = name.indexOf(" ");
+        this.firstName = name.substring(0, index);
+        this.lastName = name.substring(index);
         this.studentMajor = major;
         this.GPA = GPA; 
         this.studentEmail = email; 

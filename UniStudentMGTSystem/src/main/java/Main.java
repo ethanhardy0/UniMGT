@@ -69,7 +69,7 @@ public class Main {
             if (selection == 6) {
                 System.out.println("Exiting Menu...");
             }
-            if (selection > 6) {
+            if (selection > 6 || selection < 0) {
             System.out.println("Please enter a valid menu option.\n");
             return 0;
             }
@@ -150,8 +150,14 @@ public class Main {
 
         System.out.print("Email: ");
         String email = studentStr.nextLine(); 
-        student.setStudentEmail(email);
+        
+        while(!email.contains("@")){
 
+            System.out.println("Enter a valid email address! Make sure you use an @ symbol!");
+            System.out.println("Email: ");
+            email = studentStr.nextLine();
+        }
+        student.setStudentEmail(email);
 
     // Adds students to the student array
         studentArray.add(student); 
@@ -274,7 +280,6 @@ public class Main {
         }
         System.out.println();
     }
-
 }
 
 /*
