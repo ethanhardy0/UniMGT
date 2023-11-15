@@ -32,27 +32,18 @@ public class Course {
         enrolledStudents.add(newStudent);
     }
 
-    /*public boolean removeStudent(int studentID) {
-        int idToRemove = 0;
-        for (Student student : enrolledStudents) {
-            if (student.getStudentID() == studentID) {
-                idToRemove = studentID - 1000;
-                enrolledStudents.remove(idToRemove);
-            } 
-        }
-        return false; 
-    }*/
-
+    // FIXED
     public boolean removeStudent(int studentID) {
-        int idToRemove = 0;
-        if (enrolledStudents.isEmpty()) 
-            return false;
-        
-        else 
-            idToRemove = studentID - 1000; 
-            Student guyToRemove = enrolledStudents.get(idToRemove); 
-            enrolledStudents.remove(guyToRemove);
-            return true;
+        for (int i = 0; i < enrolledStudents.size(); i++) {
+            Student student = enrolledStudents.get(i);
+
+            if (student.getStudentID() == studentID) {
+                enrolledStudents.remove(i);  
+                return true;                 
+            }
+        }
+
+        return false;  // Student with the given ID not found
     }
     
     public void assignInstructor(Instructor newInstr) {

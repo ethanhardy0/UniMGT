@@ -155,14 +155,9 @@ public class Main {
         studentArray.add(student); 
         System.out.println();
 
-    // Prints courses available to enroll a student
-        System.out.println("Please Choose a Class: ");
-    // Prints courses available
-        System.out.println(courseArray.toString());
-        System.out.println("-------------------");
-    // Selects desired course
-        System.out.print("Choose Class: ");
-        int courseNum = studentInt.nextInt(); 
+    // Prints available courses
+        int courseNum = 0;
+        printCourses(); 
 
     // Assigns student to course
         Course selectedCourse = courseArray.get(courseNum);
@@ -185,12 +180,10 @@ public class Main {
             System.out.println("Cannot remove a student if there are no students enrolled\n");
             return;
         }
-    // Prints courses in the system    
-        System.out.println("Please choose a class");
-        System.out.println(courseArray.toString()); 
-        System.out.println("-------------------");
-        System.out.print("Choose class #:");
-        int courseNum = scan.nextInt();
+
+    // Prints available courses
+        int courseNum = 0;
+        printCourses(); 
 
     // Prints students in a class
         System.out.println("Please choose a student: ");
@@ -242,10 +235,9 @@ public class Main {
         instructorArray.add(instructor);
         System.out.println();
 
-    // Prints courses available to instructors
-        System.out.println("Choose a course for this Instructor");
-        System.out.println(courseArray.toString());
-        int courseNum = instrInt.nextInt();
+    // Prints available courses
+        int courseNum = 0;
+        printCourses(); 
 
         System.out.println("-------------------");
         System.out.print("Choose Class #: " + courseNum);
@@ -261,30 +253,35 @@ public class Main {
             return;
         }
 
-    // Scanner for choosing a course
-        Scanner scan = new Scanner(System.in);
-        
     // Prints courses in the system
+        int courseNum = 0;
+        printCourses();
+
+    //Prints course roster of students
+        System.out.println(courseArray.get(courseNum).getRoster());
+        System.out.println();
+    }
+
+    public static int printCourses() {
+    // Scanner for choosing a course
+        Scanner scan = new Scanner(System.in);   
+
         System.out.println("Please choose a class: ");
         courseArray.toString();
         System.out.print("Choose Class#: ");
         int courseNum = scan.nextInt();
 
-    //Prints course roster of students
-        System.out.println(courseArray.get(courseNum).getRoster());
-        System.out.println();
-
+        return courseNum;
     }
 
 }
 
 /*
-Show arrays for rmStudent and printRoster - format them
+Display arrays for rmStudent and printRoster - format them
 Validate all user input
 Add comments throughout code
 Student and Instructor name not correct - first last
 
 removeStudent --> can be better (no for each loop needed) : remove(Object) = bool
 
-GPA constraint
  */
