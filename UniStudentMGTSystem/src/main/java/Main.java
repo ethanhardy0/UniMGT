@@ -69,11 +69,11 @@ public class Main {
             if (selection == 6) {
                 System.out.println("Exiting Menu...");
             }
-            return selection;
-        }
-        if (selection > 6) {
+            if (selection > 6) {
             System.out.println("Please enter a valid menu option.\n");
             return 0;
+            }
+            return selection;
         }
         else {
             System.out.println("Please enter a valid menu option.\n");
@@ -104,6 +104,7 @@ public class Main {
     // Instantiates a new course once input is received
         Course course = new Course(name, building, room, capacity); 
         courseArray.add(course);
+        System.out.println();
     }
 
     public static void addStudent() {
@@ -156,18 +157,15 @@ public class Main {
         studentArray.add(student); 
         System.out.println();
 
-    // Prints courses available to enroll a student
-        System.out.println("Please Choose a Class: ");
-
     // Prints available courses
         printCourses();
 
     // Assigns student to course
         Course selectedCourse = courseArray.get(courseNum);
         selectedCourse.enrolledStudent(student);
+        System.out.println();
 
     }
-
 
     public static void rmStudent() {
     // Scanner for input of which student to remove
@@ -241,6 +239,7 @@ public class Main {
     
     // Assigns instructor to a course
         courseArray.get(courseNum).assignInstructor(instructor);
+        System.out.println();
     }
 
     public static void printRoster() {
@@ -260,7 +259,7 @@ public class Main {
     public static void printCourses() {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Please choose a class: ");
+        System.out.println("Please Choose a class: ");
         for (int i = 0; i < courseArray.size(); i ++) {
             System.out.println(courseArray.get(i));
         }
@@ -273,8 +272,7 @@ public class Main {
             System.out.print("Choose Class# ");
             courseNum = scan.nextInt();
         }
-
-        
+        System.out.println();
     }
 
 }
@@ -287,5 +285,4 @@ Student and Instructor name not correct - first last
 
 removeStudent --> can be better (no for each loop needed) : remove(Object) = bool
 
-// Print courses = put into method?
  */

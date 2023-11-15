@@ -32,7 +32,6 @@ public class Course {
         enrolledStudents.add(newStudent);
     }
 
-    // FIXED
     public boolean removeStudent(int studentID) {
         for (int i = 0; i < enrolledStudents.size(); i++) {
             Student student = enrolledStudents.get(i);
