@@ -43,7 +43,7 @@ public class Course {
             }
         }
 
-        return false;  // Student with the given ID not found
+        return false; 
     }
     
     public void assignInstructor(Instructor newInstr) {
