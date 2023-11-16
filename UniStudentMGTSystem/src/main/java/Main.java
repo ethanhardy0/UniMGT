@@ -1,8 +1,11 @@
 /**
- * PA 6: University Student Management System
- * System to create courses, add instructors, and add/remove students 
- *
  * @author Ethan Hardy, Jacob Carney, Brian Thomas
+ * 11/17/23
+ * PA 6: University Student Management System to create courses, 
+ * add instructors, and add/remove students.
+ *
+ * My submission of this program indicates that I have neither received nor
+ * given substantial or unauthorized assistance in writing this program.
  */
 
 import java.util.Scanner;
@@ -127,7 +130,12 @@ public class Main {
     // Fills student object
         System.out.println("Enter Student Information:");
         System.out.print("Name: ");
-        String name = studentStr.nextLine(); 
+        String name = studentStr.nextLine();
+        while (!name.contains(" ")) { 
+            System.out.println("Please enter a first and last name.");
+            System.out.print("Name:");
+            name = studentStr.nextLine();
+        }
         Student student = new Student(name);
 
         System.out.print("Major: ");
@@ -227,6 +235,11 @@ public class Main {
         System.out.println("Enter Instructor Information:");
         System.out.print("Name: ");
         String name = instrStr.nextLine();
+        while (!name.contains(" ")) { 
+            System.out.println("Please enter a first and last name.");
+            System.out.print("Name:");
+            name = instrStr.nextLine();
+        }
 
         System.out.print("Prefix: ");
         String prefix = instrStr.nextLine();
@@ -239,6 +252,11 @@ public class Main {
 
         System.out.print("Email: ");
         String email = instrStr.nextLine();
+        while (!email.contains("@")){
+            System.out.println("Enter a valid email address! Make sure you use an @ symbol!");
+            System.out.println("Email: ");
+            email = instrStr.nextLine();
+        }
 
 
     // Instantiates a new instructor once input is received
