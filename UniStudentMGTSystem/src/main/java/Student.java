@@ -1,6 +1,6 @@
 /**
  *
- * @author ethan
+ * @author Ethan Hardy, Jacob Carney, Brian Thomas
  */
 
 public class Student {
