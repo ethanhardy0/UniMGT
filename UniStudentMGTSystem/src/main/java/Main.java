@@ -1,13 +1,15 @@
 /**
+ * PA 6: University Student Management System
+ * System to create courses, add instructors, and add/remove students 
  *
- * @author ethan
+ * @author Ethan Hardy, Jacob Carney, Brian Thomas
  */
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
+
     public static ArrayList<Student> studentArray = new ArrayList<>();
     public static ArrayList<Course> courseArray = new ArrayList<>();
     public static ArrayList<Instructor> instructorArray = new ArrayList<>();
@@ -47,7 +49,8 @@ public class Main {
             }
         } while (selection != 6);
     }
-    
+
+// Method for printing and validating the menu for the system
     public static int printMenu(int selection) {
         Scanner sel = new Scanner(System.in);
         
@@ -63,7 +66,7 @@ public class Main {
                           6. Quit
                           Choice:  """);
             
-    // validates menu choice
+    // Validates menu choice
         if (sel.hasNextInt()) {
             selection = sel.nextInt();  
             if (selection == 6) {
@@ -81,8 +84,9 @@ public class Main {
         }
     }
     
+// Method for creating courses
     public static void createCourse() {
-    // Scanner objects for course input --> separate data types for each instance variable 
+    // Scanner objects for course input
         Scanner courseStr = new Scanner(System.in);
         Scanner courseInt = new Scanner(System.in);
 
@@ -107,6 +111,7 @@ public class Main {
         System.out.println();
     }
 
+// Method for adding students to courses
     public static void addStudent() {
     // Checks if there are courses
         if (courseArray.isEmpty()) {
@@ -131,6 +136,7 @@ public class Main {
         
         System.out.print("Year: ");
         int year = studentInt.nextInt(); 
+    // Checks if year is valid
         while (year < 1 || year > 4) {
             System.out.println("Not an available year!");
             System.out.print("Year:");
@@ -149,10 +155,9 @@ public class Main {
         student.setGPA(GPA);             
 
         System.out.print("Email: ");
-        String email = studentStr.nextLine(); 
-        
-        while(!email.contains("@")){
-
+        String email = studentStr.nextLine();
+    // Checks if email can be accepted 
+        while (!email.contains("@")){
             System.out.println("Enter a valid email address! Make sure you use an @ symbol!");
             System.out.println("Email: ");
             email = studentStr.nextLine();
@@ -173,6 +178,7 @@ public class Main {
 
     }
 
+// Method for removing a student from a course
     public static void rmStudent() {
     // Scanner for input of which student to remove
         Scanner scan = new Scanner(System.in); 
@@ -206,6 +212,7 @@ public class Main {
             System.out.println("Student Successfully Removed!\n");
     }
 
+// Method for adding an instructor to a course
     public static void addInstr() {
     // Checks if there are courses 
         if (courseArray.isEmpty()) {
@@ -248,6 +255,7 @@ public class Main {
         System.out.println();
     }
 
+// Method for printing the students for a course
     public static void printRoster() {
     // Checks if there are courses 
         if (courseArray.isEmpty()) {
@@ -262,9 +270,11 @@ public class Main {
         System.out.println(courseArray.get(courseNum).getRoster());
     }
 
+// Prints the courses stored in the system
     public static void printCourses() {
         Scanner scan = new Scanner(System.in);
 
+    // Prints courses stored in courseArray
         System.out.println("Please Choose a class: ");
         for (int i = 0; i < courseArray.size(); i ++) {
             System.out.println(courseArray.get(i));
@@ -272,7 +282,7 @@ public class Main {
             
         System.out.print("Choose Class# ");
         courseNum = scan.nextInt();
-
+    // Validates if course number selected exists
         while (courseNum < 0 || courseNum > courseArray.size()) {
             System.out.println("Invalid class #\n");
             System.out.print("Choose Class# ");
@@ -281,13 +291,3 @@ public class Main {
         System.out.println();
     }
 }
-
-/*
-Show arrays for rmStudent and printRoster - format them
-Validate all user input
-Add comments throughout code
-Student and Instructor name not correct - first last
-
-removeStudent --> can be better (no for each loop needed) : remove(Object) = bool
-
- */
