@@ -105,9 +105,15 @@ public class Main {
         String room = courseStr.nextLine();
         
         System.out.print("Enter Room Capacity: ");
-        int capacity = courseInt.nextInt(); 
+    // Checks whether the capacity is valid
+        while (!courseInt.hasNextInt()) {
+            System.out.println("Please enter a valid capacity");
+            System.out.print("Enter Room Capacity: ");
+            courseInt.next();
+        }
+        int capacity = courseInt.nextInt();
 
-        
+
     // Instantiates a new course once input is received
         Course course = new Course(name, building, room, capacity); 
         courseArray.add(course);
@@ -131,6 +137,7 @@ public class Main {
         System.out.println("Enter Student Information:");
         System.out.print("Name: ");
         String name = studentStr.nextLine();
+    // Checks if name input is valid
         while (!name.contains(" ")) { 
             System.out.println("Please enter a first and last name.");
             System.out.print("Name:");
@@ -295,7 +302,7 @@ public class Main {
     // Prints courses stored in courseArray
         System.out.println("Please Choose a class: ");
         for (int i = 0; i < courseArray.size(); i ++) {
-            System.out.println(courseArray.get(i));
+            System.out.println(courseArray.get(i).toString());
         }
             
         System.out.print("Choose Class# ");
@@ -303,7 +310,7 @@ public class Main {
     // Validates if course number selected exists
         while (courseNum < 0 || courseNum > courseArray.size()) {
             System.out.println("Invalid class #\n");
-            System.out.print("Choose Class# ");
+            System.out.print("Choose Class# : ");
             courseNum = scan.nextInt();
         }
         System.out.println();

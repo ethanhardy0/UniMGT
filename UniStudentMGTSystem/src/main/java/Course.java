@@ -71,9 +71,16 @@ public class Course {
     }
     
 // Returns a course object in a String format
-    public String toString() {
+    public String toString() {  
+    // Checks whether an instructor has been added to a course
+        String instructorName;
+        if (courseInstructor == null) 
+            instructorName = "None";
+        else 
+            instructorName = courseInstructor.getTitle();
+
         String str = "Course #: " + courseID + " Course: " + courseName + " Building: " + courseBuilding + " Room: " + courseBldgRoom
-            + " Capacity: " + courseCapacity + " Instructor of Record: " + courseInstructor;
+            + " Capacity: " + courseCapacity + " Instructor of Record: " + instructorName;
         return str;
     }
 
