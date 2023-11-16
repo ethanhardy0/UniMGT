@@ -51,10 +51,7 @@ public class Instructor {
     
 // Getter method for returning the formal title of an instructor
     public String getTitle() {
-        if (this.prefix.isEmpty() && this.name.isEmpty())
-            return "None";
-        else 
-            return this.prefix + " " + name;
+        return this.prefix + " " + name;
     }
 
 // Method for returning the instructor object in a string format
