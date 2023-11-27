@@ -143,11 +143,9 @@ public class Main {
             System.out.print("Name:");
             name = studentStr.nextLine();
         }
-        Student student = new Student(name);
-
+        
         System.out.print("Major: ");
         String major = studentStr.nextLine(); 
-        student.setStudentMajor(major);
         
         System.out.print("Year: ");
         int year = studentInt.nextInt(); 
@@ -157,7 +155,6 @@ public class Main {
             System.out.print("Year:");
             year = studentInt.nextInt();
         }
-        student.setStudentYear(year);
 
         System.out.print("GPA: ");
         double GPA = studentDouble.nextDouble();
@@ -167,7 +164,6 @@ public class Main {
             System.out.print("GPA: ");
             GPA = studentDouble.nextDouble();
         }
-        student.setGPA(GPA);             
 
         System.out.print("Email: ");
         String email = studentStr.nextLine();
@@ -177,7 +173,8 @@ public class Main {
             System.out.println("Email: ");
             email = studentStr.nextLine();
         }
-        student.setStudentEmail(email);
+
+        Student student = new Student(name, year, major, GPA, email);
 
     // Adds students to the student array
         studentArray.add(student); 

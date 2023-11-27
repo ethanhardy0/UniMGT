@@ -14,16 +14,7 @@ public class Student {
     private int studentID;
     private static int nextStudentID = 1000;
 
-// Constructor for creating a student 
-    public Student(String name) {
-        int index = name.indexOf(" ");
-        this.firstName = name.substring(0, index);
-        this.lastName = name.substring(index);
-        this.studentID = nextStudentID;
-        nextStudentID++;
-    }
-
-// Overloaded constructor to take more parameters
+// Constructor to create student objects
     public Student(String name, int year, String major, double GPA, String email) {
         int index = name.indexOf(" ");
         this.firstName = name.substring(0, index);
