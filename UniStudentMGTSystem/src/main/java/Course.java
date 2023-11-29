@@ -1,7 +1,11 @@
 /**
  * @author Ethan Hardy, Jacob Carney, Brian Thomas
- * 
- * Course class definition for the University Student Management System
+ * 11/17/23
+ * PA 6: University Student Management System to create courses, 
+ * add instructors, and add/remove students.
+ *
+ * My submission of this program indicates that I have neither received nor
+ * given substantial or unauthorized assistance in writing this program.
  */
 
 import java.util.ArrayList;
@@ -63,6 +67,13 @@ public class Course {
 // Setter method for assigning a capacity of students to a course
     public void setCapacity(int newCapacity) {
         this.courseCapacity = newCapacity; 
+    }
+    public int getCapacity (){
+     return this.courseCapacity;   
+    }
+    
+    public int getStudentTotal(){
+       return this.enrolledStudents.size();
     }
 
 // Setter method for naming a course

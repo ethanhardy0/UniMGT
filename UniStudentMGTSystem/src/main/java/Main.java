@@ -158,6 +158,7 @@ public class Main {
 
         System.out.print("GPA: ");
         double GPA = studentDouble.nextDouble();
+        
     // Checks if GPA is in-range
         while (GPA < 0 || GPA > 5) {
             System.out.println("Invalid GPA!");
@@ -183,9 +184,16 @@ public class Main {
     // Prints available courses
         printCourses();
 
+        //New code written below by Jake 11/28/2023 3:58 PM
+        
+        
     // Assigns student to course
         Course selectedCourse = courseArray.get(courseNum);
+        if(selectedCourse.getCapacity()> selectedCourse.getStudentTotal()){
         selectedCourse.enrolledStudent(student);
+        } else {
+            System.out.println("Cannot add anymore students! Pick a different course!");
+        }
         System.out.println();
 
     }
